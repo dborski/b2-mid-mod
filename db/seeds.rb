@@ -9,6 +9,6 @@
 studio1 = Studio.create(name: "studio1", location: "location1")
 studio2 = Studio.create(name: "studio2", location: "location2")
 
-movie1 = Movie.create(title: "movie1", creation_year: "year1", genre: "genre1", studio_id: "#{studio1.id}")
-movie2 = Movie.create(title: "movie2", creation_year: "year2", genre: "genre2", studio_id: "#{studio1.id}")
-movie3 = Movie.create(title: "movie3", creation_year: "year3", genre: "genre3", studio_id: "#{studio2.id}")
+movie1 = studio1.movies.create(title: "movie1", creation_year: "year1", genre: "genre1")
+movie2 = studio1.movies.create(title: "movie2", creation_year: "year2", genre: "genre2")
+movie3 = studio2.movies.create(title: "movie3", creation_year: "year3", genre: "genre3")

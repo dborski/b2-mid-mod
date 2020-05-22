@@ -2,7 +2,7 @@
 
 <% @studios.each do |studio| %>
   <section id="studio-<%= studio.id %>">
-    <p><%= studio.name %></p>
+    <h2><%= studio.name %></h2>
     <p><%= studio.location %></p>
     <p>Movies:</p>
     <% studio.movies.each do |movie| %>
