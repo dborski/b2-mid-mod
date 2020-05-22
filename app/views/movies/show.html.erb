@@ -5,4 +5,7 @@
 <p>Genre: <%= @movie.genre %></p>
 
 <p>Actors:</p>
+<% @movie.actors.youngest_to_oldest.each do |actor| %>
+  <p><%= actor.name %></p>
+<% end %>
 
