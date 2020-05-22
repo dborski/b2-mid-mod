@@ -41,5 +41,24 @@ describe "Movie Show Page" do
       expect(page).to have_content(actor2.name)
       expect(page).to have_content(actor3.name)
     end
+    it "I see the average age of all actors" do
+      
+      studio1 = Studio.create!(name: "studio1", location: "location1")
+      movie1 = Movie.create!(title: "movie1", creation_year: "year1", genre: "genre1", studio_id: "#{studio1.id}")
+      movie2 = Movie.create!(title: "movie2", creation_year: "year2", genre: "genre2", studio_id: "#{studio1.id}")
+      movie3 = Movie.create!(title: "movie3", creation_year: "year3", genre: "genre3", studio_id: "#{studio1.id}")
+
+      actor1 = Actor.create!(name: "actor1", age: 6)
+      actor2 = Actor.create!(name: "actor2", age: 2)
+
+      ActorMovie.create!(movie: movie1, actor: actor1)
+      ActorMovie.create!(movie: movie3, actor: actor1)
+      ActorMovie.create!(movie: movie3, actor: actor2)
+
+
+      visit "/movies/#{movie3.id}"
+
+      expect(page).to have_content(4)
+    end
   end
 end
